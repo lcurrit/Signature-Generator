@@ -1,8 +1,177 @@
-<html>
-	<head>
-		<title>Test</title>
-	</head>
-	<body>
-		Test
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
+	<title>Tivity Signature Generator</title>
+	<style>
+		.container {
+			max-width: 960px;
+		}
+		.copy {
+			width: 85px;
+		}
+		button span {
+			display: block;
+		}
+		.feedback_text {
+			display: none;
+		}
+		.feedback>span {
+			display: none;
+		}
+		.feedback>span.feedback_text {
+			display: block;
+		}
+
+	</style>
+</head>
+
+<body>
+	<div id="app" class="container my-5">
+		<div class="row">
+			<form class="col">
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<input id="name" class="form-control" v-model="name" placeholder="Name" type="text" />
+						</div>
+					</div>
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<input id="title" class="form-control" v-model="title" placeholder="Title" type="text" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<input id="mobile" class="form-control" v-model="mobile" placeholder="Mobile Phone Number" type="tel" maxlength="10" />
+						</div>
+					</div>
+					<div class="col-12 col-sm-6">
+						<div class="form-group">
+							<input id="office" class="form-control" v-model="office" placeholder="Office Phone Number" type="tel" maxlength="10" />
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<div class="form-group">
+							<select id="address" class="form-control" v-model="address">
+								<option disabled value="">Select a location</option>
+								<option value="20098 Ashbrook Place, Suite 250, Ashburn, VA 20147">Ashburn</option>
+								<option value="10 Post Office Square, Suite 995, Boston, MA 02110">Boston</option>
+								<option value="1445 S Spectrum Blvd, Suite 100, Chandler, AZ 85286">Chandler</option>
+								<option value="701 Cool Springs Blvd, Franklin, TN 37067">Franklin</option>
+								<option value="">Remote</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-12 col-md-6">
+						<div class="form-group">
+							<input id="email" class="form-control" v-model="email" placeholder="Email" type="email" />
+						</div>
+					</div>
+				</div>
+
+
+			</form>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col">
+				<table id="source" cellpadding="0" cellspacing="0">
+					<tr v-if="name || title">
+						<td style="color:#000000; font-family:'Calibri (Body)',Calibri,Arial,sans-serif; font-size:11pt; line-height:normal;"><span style="font-weight:bold;">{{name}}</span> <span v-if="title"><span style="color:#EB3300;">•</span> {{title}}</span></td>
+					</tr>
+					<tr>
+						<td style="color:#000000; font-family:'Calibri (Body)',Calibri,Arial,sans-serif; font-size:11pt; line-height:normal;"><span style="font-weight:bold;">Tivity Health</span> <span style="color:#EB3300;">•</span> <a href="http://www.tivityhealth.com/" style="color:#000000; text-decoration:underline;">tivityhealth.com</a></td>
+					</tr>
+					<tr v-if="mobile || office || address">
+						<td style="color:#000000; font-family:'Calibri (Body)',Calibri,Arial,sans-serif; font-size:11pt; line-height:normal;"><span v-if="mobile"><span style="color:#EB3300; font-weight:bold;">c •</span> {{mobile | phone}}&nbsp; </span><span v-if="office"><span style="color:#EB3300; font-weight:bold;">o •</span> {{office | phone}}&nbsp; </span><span v-if="address"><span style="color:#EB3300; font-weight:bold;">a •</span> {{address}}</span></td>
+					</tr>
+					<tr v-if="email">
+						<td style="color:#000000; font-family:'Calibri (Body)',Calibri,Arial,sans-serif; font-size:11pt; line-height:normal;"><a :href="'mailto:' + email" style="color:#0563C1; text-decoration:underline;">{{email}}</a></td>
+					</tr>
+					<tr>
+						<td>
+							<img src="http://www.tivityhealth.com/assets/Tivity_logo_emailsig_0918.jpg" alt="Tivity Health" width="127" height="75">
+							<div style="font-size:8px; line-height:8px; height:8px;">&nbsp;</div>
+						</td>
+					</tr>
+					<tr>
+						<td style="color:#98999B; font-family:'Calibri (Body)',Calibri,Arial,sans-serif; font-size:11pt; line-height:normal;">
+							<span style="color:#EB3300; font-weight:bold;">Our Values:</span> Customer-Focused • Workplace Dignity and Inclusion • Excellence • Provocative • Empowerment with Results
+						</td>
+					</tr>
+					<tr>
+						<td style="color:#98999B; font-family:'Calibri (Body)',Calibri,Arial,sans-serif; font-size:11pt; line-height:normal;">
+							<span style="color:#EB3300; font-weight:bold;">Our Products:</span> <a href="https://www.silversneakers.com/" style="color:#98999B; text-decoration:underline;">SilverSneakers®</a> • <a href="https://www.primemember.com/?__hstc=31509537.c23513adb2d55d30857c47bdef130bcb.1512505167921.1516309398946.1518208656560.6&__hssc=31509537.3.1518208656560&__hsfp=746448343" style="color:#98999B; text-decoration:underline;">Prime®</a> • <a href="http://www.tivityhealth.com/products/wholehealth-living/" style="color:#98999B; text-decoration:underline;">WholeHealth Living™</a> • <a href="https://www.myflip50.com/" style="color:#98999B; text-decoration:underline;">flip50™</a>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="col text-center">
+				<button class="copy btn btn-primary" ref="copy" data-clipboard-target="#source">
+					<i class="far fa-clipboard"></i>
+					<span>Copy</span>
+					<span class="feedback_text">Copied!</span>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/js/bootstrap.min.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.6.1/clipboard.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.min.js"></script>
+
+	<script>
+		window.box = new Vue({
+			el: "#app",
+			data() {
+				return {
+					name: "",
+					title: "",
+					email: "",
+					mobile: "",
+					office: "",
+					address: ""
+				};
+			},
+			mounted: function mounted() {
+				var _this = this;
+				var signatureClipboard = new Clipboard(".copy");
+
+				var feedback = function feedback(ref) {
+					_this.$refs[ref].classList.add("feedback");
+					setTimeout(function () {
+						_this.$refs[ref].classList.remove("feedback");
+					}, 2000);
+				};
+
+				signatureClipboard.on("success", function (e) {
+					feedback("copy");
+				});
+			},
+			filters: {
+				phone: function (phone) {
+					return phone.replace(/[^0-9]/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1.$2.$3');
+				}
+			}
+		});
+	</script>
+</body>
+
+<!-- Refrence: https://codepen.io/abensur/pen/wdgVwj -->
+
 </html>
