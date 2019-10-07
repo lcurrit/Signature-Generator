@@ -59,4 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+# Custom Ignores
 .vscode/iisexpress.json
+*.zip
